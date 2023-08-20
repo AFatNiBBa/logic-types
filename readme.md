@@ -21,7 +21,7 @@ type Test = { a: 1, readonly ab: 2, c: 3 };
 type a = FilterObject<Test, Lambda.Not<Lambda.IsReadOnly>>;
 //   ^? type a = { a: 1, c: 3 }
 
-// Keys that fo NOT start with "a"
+// Keys that do NOT start with "a"
 type b = FilterObject<Test, <K>(v: any, k: K) => Not<Extends<K, `a${string}`>>>;
 //   ^? type b = { c: 3 }
 ```
