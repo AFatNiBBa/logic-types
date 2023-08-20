@@ -11,6 +11,21 @@ Or just a specific section
 import { /* ... */ } from "logic-types/src/gates"; // "gates" is a section
 ```
 
+Here are some examples on things you can do with this package
+```ts
+import { FilterObject, Lambda, Not, Extends } from "logic-types";
+
+type Test = { a: 1, readonly ab: 2, c: 3 };
+
+// Not readonly keys
+type a = FilterObject<Test, Lambda.Not<Lambda.IsReadOnly>>;
+//   ^? type a = { a: 1, c: 3 }
+
+// Keys that fo NOT start with "a"
+type b = FilterObject<Test, <K>(v: any, k: K) => Not<Extends<K, `a${string}`>>>;
+//   ^? type b = { c: 3 }
+```
+
 ## Exported types
 Here's a list of the exported types divided by section.
 These descriptions are summaries, check the doc comment on the actual type for the full explaination
