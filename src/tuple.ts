@@ -3,16 +3,22 @@ import { Check } from "./predicates";
 import { Ternary } from "./gates";
 
 /**
+ * Returns the length of a tuple
+ * @template T The tuple from which to get the length
+ */
+export type Length<T extends readonly unknown[]> = T extends { length: infer U } ? number & U : never;
+
+/**
  * Returns the first element of a tuple
  * @template T The tuple from which to return the first element
  */
-export type Head<T extends readonly unknown[]> = T extends [ infer U, ...infer _ ] ? U : never;
+export type Head<T extends readonly unknown[]> = T extends readonly [ infer U, ...unknown[] ] ? U : never;
 
 /**
  * Returns the last element of a tuple
  * @template T The tuple from which to return the last element
  */
-export type Tail<T extends readonly unknown[]> = T extends [ infer U ] ? U : T extends [ infer _, ...infer U ] ? Tail<U> : never;
+export type Tail<T extends readonly unknown[]> = T extends readonly [ infer U ] ? U : T extends readonly [ unknown, ...infer U ] ? Tail<U> : never;
 
 /**
  * Creates a tuple of {@link T} with length {@link N} and starts with the elements from {@link Prev}
@@ -21,6 +27,19 @@ export type Tail<T extends readonly unknown[]> = T extends [ infer U ] ? U : T e
  * @template Prev The tuple on which elements will be added until the length becomes {@link N}
  */
 export type Alloc<N extends number, T = unknown, Prev extends unknown[] = []> = Prev extends { length: N } ? Prev : Alloc<N, T, [ ...Prev, T ]>;
+
+/**
+ * Flattens a tuple of tuples
+ * @template T The tuple to flatten
+ */
+export type Flat<T extends readonly unknown[][]> =
+    T extends readonly [] 
+        ? []
+        : T extends readonly [ [ ...infer U ], ...infer Rest ]
+            ? Rest extends unknown[][]
+                ? [ ...U, ...Flat<Rest> ]
+                : never
+            : never; 
 
 /**
  * Filters an array's elements based on a predicate.

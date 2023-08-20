@@ -27,8 +27,20 @@ Contains mostly boolean logic utilities
 - **Coalesce**: Like the `??` operator, but for types
 
 ### math
-Contains the type version of some math functions
-- **Sum**: Sums two numbers
+Contains the type version of some positive integer math functions
+- **IsPositive**: Tells whether a number is positive or not
+- **IsWhole**: Tells whether a number is whole or not
+- **IsValid**: Tells whether a number is supported by these types
+- **AreValid**: Guard clause for an operation on positive integers
+- **Add**: Sums two numbers
+- **Sub**: Subtracts two numbers
+- **Mul**: Multiplies two numbers
+- **Div**: Divides two numbers
+- **Mod**: Gets the reminder of the division between two numbers
+- **More**: Gets if the first number is greater than the second
+- **MoreOrEqual**: Gets if the first number is greater than or equal to the second
+- **Less**: Gets if the first number is less than the second
+- **LessOrEqual**: Gets if the first number is less than or equal to the second
 
 ### predicates
 Contains utilities for working with types of predicate callbacks
@@ -48,9 +60,11 @@ Contains utilities for working with properties of objects
 
 ### tuple
 Contains a set of types for working with types of lists
+- **Length**: Returns the length of an array in a specific way that helps TypeScript to not implode
 - **Head**: Returns the first element of an array
 - **Tail**: Returns the last element of an array
 - **Alloc**: Creates a new array of a certain input length
+- **Flat**: Flattens an array of array
 - **FilterArray**: Allows you to filter the elements of an array by using a predicate
 
 ### util
