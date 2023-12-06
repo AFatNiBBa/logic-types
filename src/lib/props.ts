@@ -17,6 +17,13 @@ export type Values<T> = T[keyof T];
 export type Override<A, B extends { [k in keyof A]?: unknown }> = Omit<A, keyof B> & B;
 
 /**
+ * Executes {@link Required} on a specific property of {@link T}
+ * @template T The object containing the property
+ * @template K The key of the property
+ */
+export type Require<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
+
+/**
  * Tells if the {@link K} property is `readonly` inside of {@link T}
  * @template T The object containing the property
  * @template K The key of the property
