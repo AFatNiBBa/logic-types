@@ -8,7 +8,7 @@ import { /* ... */ } from "logic-types";
 ```
 Or just a specific section
 ```ts
-import { /* ... */ } from "logic-types/src/gates"; // "gates" is a section
+import { /* ... */ } from "logic-types/gates"; // "gates" is a section
 ```
 
 Here are some examples on things you can do with this package
@@ -69,6 +69,7 @@ Contains utilities for working with types of predicate callbacks
 ### props
 Contains utilities for working with properties of objects
 - **Values**: Returns an union of the values from each property of the input type
+- **Override**: Overrides the type of the properties of a type with the ones of another
 - **IsReadOnly**: Tells whether a key represents a `readonly` property inside of an object
 - **IsOptional**: Tells whether a key represents an optional property inside of an object
 - **FilterObject**: Allows you to filter the properties of an object based on each the key and/or the value of each property by using a predicate

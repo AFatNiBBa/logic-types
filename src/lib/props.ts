@@ -10,6 +10,13 @@ import { Equals } from "./util";
 export type Values<T> = T[keyof T];
 
 /**
+ * Overrides the types of the properties of {@link A} with the one present in {@link B}
+ * @template A The type to override
+ * @template B Type that represents the override
+ */
+export type Override<A, B extends { [k in keyof A]?: unknown }> = Omit<A, keyof B> & B;
+
+/**
  * Tells if the {@link K} property is `readonly` inside of {@link T}
  * @template T The object containing the property
  * @template K The key of the property

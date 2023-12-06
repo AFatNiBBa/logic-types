@@ -1,12 +1,17 @@
 {
   "name": "logic-types",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Complex logic type utilities for typescript",
-  "main": "./index.ts",
+  "typesVersions": {
+    "*": {
+      "index": [ "./src/index.ts" ],
+      "*": [ "./src/lib/*.ts" ]
+    }
+  },
   "author": "AFatNiBBa",
   "license": "ISC",
   "scripts": {
-    "save": "npm publish & push"
+    "save": "npm publish"
   },
   "repository": {
     "type": "git",
