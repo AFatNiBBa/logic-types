@@ -10,6 +10,13 @@ import { Equals } from "./util";
 export type Values<T> = T[keyof T];
 
 /**
+ * Exactly like {@link Omit}, but forces {@link K} to be a key of {@link T}
+ * @template T The type from which to omit a property
+ * @template K The key of the property
+ */
+export type Without<T, K extends keyof T> = Omit<T, K>;
+
+/**
  * Overrides the types of the properties of {@link A} with the one present in {@link B}
  * @template A The type to override
  * @template B Type that represents the override

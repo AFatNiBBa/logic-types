@@ -69,6 +69,7 @@ Contains utilities for working with types of predicate callbacks
 ### props
 Contains utilities for working with properties of objects
 - **Values**: Returns an union of the values from each property of the input type
+- **Without**: Exactly like `Omit`, but forces the key to be present in the type
 - **Override**: Overrides the type of the properties of a type with the ones of another
 - **Require**: Partial `Required`
 - **IsReadOnly**: Tells whether a key represents a `readonly` property inside of an object
